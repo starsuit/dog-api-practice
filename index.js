@@ -2,6 +2,7 @@ const image = document.querySelector("img");
 const newDoggo = document.querySelector("#new");
 const faveDoggo = document.querySelector("#favourite");
 const faveList = document.querySelector("#favourites");
+const imageName = document.querySelector(".image-text");
 const favesURL = "https://api.myjson.com/bins/7j5p6";
 let currentURL;
 let currentList;
@@ -13,6 +14,8 @@ function getDoggo() {
       image.hidden = false;
       image.src = result.message;
       currentURL = result.message;
+      imageName.textContent = "";
+      imageName.hidden = true;
       console.log({ currentURL });
     })
     .catch(error => console.log(error));
@@ -24,12 +27,7 @@ function saveFave(event) {
     name: event.target.elements.fave.value,
     url: currentURL
   };
-  console.log(faveObject);
   let newJSON = { ...currentList, faves: [...currentList.faves, faveObject] };
-  // let newList = Object.assign({},currentList)
-  // let newFaves = currentList.faves.concat(faveObject)
-  // newList.faves = newFaves
-  console.log(newJSON);
 
   fetch(favesURL, {
     method: "put",
@@ -73,10 +71,28 @@ function makeList(result) {
     listTxt.textContent = fave.name;
     listLink.appendChild(listImg);
     listLink.appendChild(listTxt);
+    listLink.addEventListener("click", event => openFave(event, fave.url, fave.name));
+    // listLink.addEventListener("click", openFave(fave.url));
     listItem.appendChild(listLink);
     faveList.appendChild(listItem);
   });
 }
+
+function openFave(event, url, name) {
+  event.preventDefault();
+    console.log(url);
+    image.src = url;
+    currentURL = url;
+    imageName.textContent = name;
+    imageName.hidden = false;
+}
+
+// function openFave(url) {
+//   return function(event) {
+//     event.preventDefault();
+//     console.log(url);
+//   }
+// };
 
 getFaves();
 getDoggo();
