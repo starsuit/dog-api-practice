@@ -1,21 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Document</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <button id="new">new doggo</button>
-  <img class="doggo-image" alt="hopefully a doggo" hidden>
-  <form id="favourite">
-    <input id="name-fave" name="fave" type="text" required>
-    <label for="name-fave">name your favourite!</label>
-    <button>favourite</button>
-  </form>
-  <ul id="favourites"></ul>
-  <script src="index.js"></script>     
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <button id="new">new doggo</button>
+    <div class="container">
+      <div class="image-text"></div>
+      <img class="doggo-image" alt="hopefully a doggo" hidden />
+    </div>
+
+    <form id="favourite">
+      <input id="name-fave" name="fave" type="text" required />
+      <label for="name-fave">name your favourite!</label>
+      <button>favourite</button>
+    </form>
+    <h2>Favourites:</h2>
+    <ul class="favourite-list" id="favourites">
+    </ul>
+    <script src="index.js"></script>
+  </body>
 </html>
